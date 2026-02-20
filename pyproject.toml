@@ -1,0 +1,12 @@
+[project]
+name = "raysurfer-public-oneshot-eval"
+version = "0.1.0"
+description = "One-shot 3-minute consistency eval for Raysurfer"
+requires-python = ">=3.12"
+dependencies = [
+  "claude-agent-sdk>=0.1.0",
+  "raysurfer==1.0.0"
+]
+
+[tool.uv]
+package = false
