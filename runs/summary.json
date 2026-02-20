@@ -1,0 +1,220 @@
+{
+  "sla_seconds": 180.0,
+  "raysurfer": {
+    "label": "raysurfer",
+    "overall_consistency": 1.0,
+    "total_attempts": 20,
+    "total_completed": 20,
+    "total_completed_within_sla": 20
+  },
+  "per_task": {
+    "RS-001": {
+      "title": "Resumable Paginated API to Postgres ETL",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-002": {
+      "title": "CSV Warehouse Loader with Schema Evolution",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 1.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 1,
+      "delta": 0.0
+    },
+    "RS-003": {
+      "title": "Double-Entry Ledger Reconciliation",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-004": {
+      "title": "RBAC + ABAC Policy Evaluator",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-005": {
+      "title": "OAuth2 Multi-Tenant API Client",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-006": {
+      "title": "Webhook Gateway with Replay Protection",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-007": {
+      "title": "Resumable Directory Sync CLI",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-008": {
+      "title": "Deterministic Web Crawler",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-009": {
+      "title": "Event-Sourced Cart Engine",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-010": {
+      "title": "Recurring Billing + Proration Engine",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-011": {
+      "title": "Feature Flag Evaluator",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-012": {
+      "title": "Timezone-Aware Shift Scheduler",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-013": {
+      "title": "JSON Schema Compiler",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-014": {
+      "title": "Durable Job Queue",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-015": {
+      "title": "Resilient HTTP Client",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-016": {
+      "title": "JSON Diff and Patch Engine",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-017": {
+      "title": "Multi-Format Report Pack Generator",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-018": {
+      "title": "YAML Infra Planner",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-019": {
+      "title": "Stateful Log Pipeline",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    },
+    "RS-020": {
+      "title": "Release Orchestrator",
+      "raysurfer_consistency": 1.0,
+      "raysurfer_attempts": 1,
+      "raysurfer_within_sla": 1,
+      "baseline_consistency": 0.0,
+      "baseline_attempts": 1,
+      "baseline_within_sla": 0,
+      "delta": 1.0
+    }
+  },
+  "baseline": {
+    "label": "baseline",
+    "overall_consistency": 0.05,
+    "total_attempts": 20,
+    "total_completed": 1,
+    "total_completed_within_sla": 1,
+    "delta": 0.95
+  }
+}

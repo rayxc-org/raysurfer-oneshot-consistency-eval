@@ -1,0 +1,166 @@
+{
+  "label": "raysurfer",
+  "notes": "mode=raysurfer;model=haiku;max_turns=4;timeout_seconds=180.0;date=2026-02-20T04:45:12Z",
+  "runs": [
+    {
+      "task_id": "RS-001",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 8.009,
+      "timestamp_utc": "2026-02-20T04:45:05Z",
+      "details": "status=success;tools=0;prefetched_files=3;workdir=runs/workdirs/raysurfer/RS-001"
+    },
+    {
+      "task_id": "RS-002",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 2.643,
+      "timestamp_utc": "2026-02-20T04:45:08Z",
+      "details": "status=success;tools=0;prefetched_files=4;workdir=runs/workdirs/raysurfer/RS-002"
+    },
+    {
+      "task_id": "RS-003",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.23,
+      "timestamp_utc": "2026-02-20T04:45:08Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-003"
+    },
+    {
+      "task_id": "RS-004",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.124,
+      "timestamp_utc": "2026-02-20T04:45:08Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-004"
+    },
+    {
+      "task_id": "RS-005",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.16,
+      "timestamp_utc": "2026-02-20T04:45:08Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-005"
+    },
+    {
+      "task_id": "RS-006",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.159,
+      "timestamp_utc": "2026-02-20T04:45:08Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-006"
+    },
+    {
+      "task_id": "RS-007",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.147,
+      "timestamp_utc": "2026-02-20T04:45:09Z",
+      "details": "status=success;tools=0;prefetched_files=2;workdir=runs/workdirs/raysurfer/RS-007"
+    },
+    {
+      "task_id": "RS-008",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.144,
+      "timestamp_utc": "2026-02-20T04:45:09Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-008"
+    },
+    {
+      "task_id": "RS-009",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.142,
+      "timestamp_utc": "2026-02-20T04:45:09Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-009"
+    },
+    {
+      "task_id": "RS-010",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.148,
+      "timestamp_utc": "2026-02-20T04:45:09Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-010"
+    },
+    {
+      "task_id": "RS-011",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.157,
+      "timestamp_utc": "2026-02-20T04:45:09Z",
+      "details": "status=success;tools=0;prefetched_files=2;workdir=runs/workdirs/raysurfer/RS-011"
+    },
+    {
+      "task_id": "RS-012",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.377,
+      "timestamp_utc": "2026-02-20T04:45:10Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-012"
+    },
+    {
+      "task_id": "RS-013",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.291,
+      "timestamp_utc": "2026-02-20T04:45:10Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-013"
+    },
+    {
+      "task_id": "RS-014",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.477,
+      "timestamp_utc": "2026-02-20T04:45:10Z",
+      "details": "status=success;tools=0;prefetched_files=2;workdir=runs/workdirs/raysurfer/RS-014"
+    },
+    {
+      "task_id": "RS-015",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.408,
+      "timestamp_utc": "2026-02-20T04:45:11Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-015"
+    },
+    {
+      "task_id": "RS-016",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.164,
+      "timestamp_utc": "2026-02-20T04:45:11Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-016"
+    },
+    {
+      "task_id": "RS-017",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.161,
+      "timestamp_utc": "2026-02-20T04:45:11Z",
+      "details": "status=success;tools=0;prefetched_files=4;workdir=runs/workdirs/raysurfer/RS-017"
+    },
+    {
+      "task_id": "RS-018",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.156,
+      "timestamp_utc": "2026-02-20T04:45:11Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-018"
+    },
+    {
+      "task_id": "RS-019",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.256,
+      "timestamp_utc": "2026-02-20T04:45:12Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-019"
+    },
+    {
+      "task_id": "RS-020",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 0.378,
+      "timestamp_utc": "2026-02-20T04:45:12Z",
+      "details": "status=success;tools=0;prefetched_files=1;workdir=runs/workdirs/raysurfer/RS-020"
+    }
+  ]
+}

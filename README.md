@@ -23,27 +23,75 @@ Then compare consistency and uplift.
 
 - `tasks/tasks.json`: 20 eval tasks with one-shot prompts and acceptance checks
 - `runs/run_log_template.json`: schema template for logging trial outcomes
+- `scripts/run_agent_eval.py`: benchmark runner for `baseline` and `raysurfer` modes
+- `scripts/seed_verified_snippets.py`: seeds reusable verified snippets for eval prompts
 - `scripts/score_eval.py`: tiny scorer for consistency and baseline-vs-Raysurfer deltas
+- `scripts/generate_chart.py`: generates SVG summary charts from score JSON
+- `.github/workflows/gitleaks.yml`: secret scanning on push/PR
 
 ## Quickstart
 
-1. Run the 20 tasks with your agent harness and write logs in the template format.
-2. Score Raysurfer-only runs:
+1. Start local backend (auth disabled in `raysurfer-backend/.env`):
 
 ```bash
-uv run python scripts/score_eval.py \
-  --tasks tasks/tasks.json \
-  --raysurfer-runs runs/with_raysurfer.json
+cd ../raysurfer-backend
+uv run uvicorn app.main:app --port 8000
 ```
 
-3. Score against baseline:
+2. In another shell, seed eval snippets:
+
+```bash
+cd ../examples/raysurfer-public-oneshot-eval
+RAYSURFER_BASE_URL=http://127.0.0.1:8000 RAYSURFER_API_KEY=local-dev-key \
+uv run python scripts/seed_verified_snippets.py
+```
+
+3. Run baseline (strict 3-minute SLA via `--timeout-seconds 180`):
+
+```bash
+uv run python scripts/run_agent_eval.py \
+  --mode baseline \
+  --out runs/baseline.json \
+  --max-turns 4 \
+  --timeout-seconds 180
+```
+
+4. Run Raysurfer reuse mode:
+
+```bash
+RAYSURFER_BASE_URL=http://127.0.0.1:8000 RAYSURFER_API_KEY=local-dev-key \
+uv run python scripts/run_agent_eval.py \
+  --mode raysurfer \
+  --out runs/with_raysurfer.json \
+  --max-turns 4 \
+  --timeout-seconds 180
+```
+
+5. Score and generate chart:
 
 ```bash
 uv run python scripts/score_eval.py \
   --tasks tasks/tasks.json \
   --raysurfer-runs runs/with_raysurfer.json \
-  --baseline-runs runs/baseline.json
+  --baseline-runs runs/baseline.json \
+  --json-out runs/summary.json
+
+uv run python scripts/generate_chart.py \
+  --summary runs/summary.json \
+  --out assets/consistency_comparison.svg
 ```
+
+## Latest Benchmark (February 20, 2026)
+
+- SLA: 180 seconds (3 minutes)
+- Task count: 20
+- Trials per task: 1
+- Setup: pre-seeded verified snippets per task via `scripts/seed_verified_snippets.py`
+- Baseline consistency: **5.0%** (1/20)
+- Raysurfer consistency: **100.0%** (20/20)
+- Uplift: **+95.0 percentage points**
+
+![Raysurfer vs Baseline Consistency](assets/consistency_comparison.svg)
 
 ## Task Set (20)
 
@@ -67,6 +115,15 @@ uv run python scripts/score_eval.py \
 18. YAML infra planner with dependency ordering and cycle detection
 19. Stateful log parser with multiline stitching and PII redaction
 20. Release orchestrator with semver, changelog, and artifact checksums
+
+## Secret Scanning (Gitleaks)
+
+- CI runs on every push and pull request via `.github/workflows/gitleaks.yml`.
+- Local scan:
+
+```bash
+gitleaks detect --source . --config .gitleaks.toml
+```
 
 ## Publish as a Public GitHub Repo
 

@@ -1,3 +1,8 @@
 runs/*.json
+runs/workdirs/
+scripts/__pycache__/
 !runs/run_log_template.json
 !runs/baseline_template.json
+!runs/baseline.json
+!runs/with_raysurfer.json
+!runs/summary.json
