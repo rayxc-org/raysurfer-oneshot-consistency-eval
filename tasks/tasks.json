@@ -1,0 +1,288 @@
+{
+  "version": "1.0.0",
+  "sla_seconds": 180,
+  "score_definition": "Per-task consistency is completed_within_sla / attempts. Overall consistency is total completed_within_sla / total attempts.",
+  "notes": "All tasks are deterministic code-generation and execution tasks. No long-text-to-long-text LLM reasoning tasks.",
+  "tasks": [
+    {
+      "id": "RS-001",
+      "title": "Resumable Paginated API to Postgres ETL",
+      "estimated_reference_loc": 450,
+      "why_hard_without_reuse": "Agents usually miss at least one edge case across pagination, retries, dedupe, and idempotent upserts.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Implement an ETL CLI that ingests a rate-limited paginated REST API into Postgres using checkpointed incremental sync, exponential backoff, strict schema validation, and deterministic idempotent upserts.",
+      "acceptance_checks": [
+        "Resumes exactly from last successful cursor after interruption",
+        "Handles 429 and transient 5xx with bounded retries",
+        "Upserts without duplicates across reruns",
+        "Writes run metrics and row-level error counts"
+      ]
+    },
+    {
+      "id": "RS-002",
+      "title": "CSV Warehouse Loader with Schema Evolution",
+      "estimated_reference_loc": 420,
+      "why_hard_without_reuse": "Dynamic headers, strict typing, and migration-safe loading usually require several repair loops.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Build a batch loader that ingests many CSV files into a warehouse schema, supports schema drift via additive columns, enforces per-column types, and generates deterministic reject reports.",
+      "acceptance_checks": [
+        "Automatically handles new optional columns without data loss",
+        "Rejects invalid rows with exact field-level reasons",
+        "Supports rerun safety for the same input folder",
+        "Produces a reproducible load summary artifact"
+      ]
+    },
+    {
+      "id": "RS-003",
+      "title": "Double-Entry Ledger Reconciliation",
+      "estimated_reference_loc": 520,
+      "why_hard_without_reuse": "Correct balancing rules, matching heuristics, and partial settlements are error-prone in first attempts.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Create a reconciliation engine for invoices, payments, refunds, and chargebacks using double-entry accounting rules with deterministic matching, tolerance windows, and unmatched exception queues.",
+      "acceptance_checks": [
+        "Ledger stays balanced after every transaction",
+        "Partial payments are allocated deterministically",
+        "Unmatched items are emitted to a review queue",
+        "Reconciliation is idempotent across reruns"
+      ]
+    },
+    {
+      "id": "RS-004",
+      "title": "RBAC + ABAC Policy Evaluator",
+      "estimated_reference_loc": 380,
+      "why_hard_without_reuse": "Policy precedence and deny-overrides frequently break when implemented quickly.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Implement a policy engine that combines role-based and attribute-based access control with deny-overrides, policy versioning, and append-only audit logs for every decision.",
+      "acceptance_checks": [
+        "Deny rules always override allow rules",
+        "Policy version and rule id are included in each decision",
+        "Audit logs are immutable and queryable",
+        "Evaluation latency stays stable under parallel requests"
+      ]
+    },
+    {
+      "id": "RS-005",
+      "title": "OAuth2 Multi-Tenant API Client",
+      "estimated_reference_loc": 360,
+      "why_hard_without_reuse": "Token refresh races and cache invalidation bugs usually require multiple iterations.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Build a multi-tenant OAuth2 client with per-tenant token storage, proactive refresh, request retries, and concurrency-safe single-flight refresh behavior.",
+      "acceptance_checks": [
+        "Only one refresh occurs per tenant during token expiry races",
+        "401 responses trigger safe retry after refresh",
+        "Tenant isolation prevents cross-tenant token usage",
+        "Client emits structured request and auth metrics"
+      ]
+    },
+    {
+      "id": "RS-006",
+      "title": "Webhook Gateway with Replay Protection",
+      "estimated_reference_loc": 390,
+      "why_hard_without_reuse": "Signature verification and idempotency guarantees are easy to implement incorrectly.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Create an HTTP webhook gateway that verifies HMAC signatures, enforces timestamp windows, blocks replay via nonce/idempotency stores, and dispatches to typed handlers.",
+      "acceptance_checks": [
+        "Invalid signatures are rejected with explicit diagnostics",
+        "Replayed payloads are rejected deterministically",
+        "Handler execution is idempotent",
+        "Failures route to dead-letter storage"
+      ]
+    },
+    {
+      "id": "RS-007",
+      "title": "Resumable Directory Sync CLI",
+      "estimated_reference_loc": 480,
+      "why_hard_without_reuse": "Delta detection, chunking, and resume logic commonly fail on edge cases.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Implement a sync CLI that uploads only changed files to object storage using chunked transfer, checksum verification, resumable progress, and configurable parallelism.",
+      "acceptance_checks": [
+        "Unchanged files are skipped via checksum index",
+        "Interrupted uploads resume from last completed chunk",
+        "Final remote checksums match local files",
+        "Conflict strategy is deterministic"
+      ]
+    },
+    {
+      "id": "RS-008",
+      "title": "Deterministic Web Crawler",
+      "estimated_reference_loc": 430,
+      "why_hard_without_reuse": "Canonical URL logic and incremental crawl state often require multiple bug-fix loops.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Build a crawler that respects robots rules, normalizes and canonicalizes URLs, deduplicates pages, and supports incremental recrawls with content-hash change detection.",
+      "acceptance_checks": [
+        "Crawler avoids duplicate pages across canonical variants",
+        "Recrawl skips unchanged content",
+        "Depth and domain constraints are enforced",
+        "Crawl state can be resumed after crash"
+      ]
+    },
+    {
+      "id": "RS-009",
+      "title": "Event-Sourced Cart Engine",
+      "estimated_reference_loc": 410,
+      "why_hard_without_reuse": "Replay determinism and snapshot correctness are difficult to nail in one attempt.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Implement an event-sourced shopping cart with append-only events, optimistic concurrency, periodic snapshots, and deterministic state rebuild from any point in history.",
+      "acceptance_checks": [
+        "Concurrent writes detect and resolve version conflicts",
+        "Replay from genesis and replay from snapshot are identical",
+        "Events are immutable and fully auditable",
+        "Idempotency keys prevent duplicate command effects"
+      ]
+    },
+    {
+      "id": "RS-010",
+      "title": "Recurring Billing + Proration Engine",
+      "estimated_reference_loc": 540,
+      "why_hard_without_reuse": "Proration across plan changes, billing anchors, and timezone boundaries is highly error-prone.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Create a recurring billing engine supporting monthly and annual plans, mid-cycle upgrades and downgrades, deterministic proration, and invoice line item generation.",
+      "acceptance_checks": [
+        "Proration math is stable across DST and month length differences",
+        "Upgrade and downgrade rules are deterministic",
+        "No negative final invoice totals unless credit notes are explicit",
+        "Same inputs always produce byte-identical invoice JSON"
+      ]
+    },
+    {
+      "id": "RS-011",
+      "title": "Feature Flag Evaluator",
+      "estimated_reference_loc": 340,
+      "why_hard_without_reuse": "Sticky bucketing and segment targeting logic often have subtle determinism bugs.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Build a feature flag engine with rule priority, user segment matching, percentage rollouts, sticky bucketing, and offline evaluation from a static config file.",
+      "acceptance_checks": [
+        "Same user key always maps to same bucket",
+        "Rule priority and default fallback are explicit",
+        "Evaluation works fully offline",
+        "Decision traces show which rule matched"
+      ]
+    },
+    {
+      "id": "RS-012",
+      "title": "Timezone-Aware Shift Scheduler",
+      "estimated_reference_loc": 470,
+      "why_hard_without_reuse": "Constraint-heavy scheduling with timezone and labor rules typically needs multiple correction passes.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Implement a scheduler that assigns staff to shifts across timezones while enforcing labor constraints like max hours, minimum rest windows, skill requirements, and coverage targets.",
+      "acceptance_checks": [
+        "No worker exceeds legal or configured hour limits",
+        "Minimum rest intervals are never violated",
+        "Coverage requirements are met or unmet slots are reported",
+        "Scheduler output is deterministic for a fixed seed"
+      ]
+    },
+    {
+      "id": "RS-013",
+      "title": "JSON Schema Compiler",
+      "estimated_reference_loc": 500,
+      "why_hard_without_reuse": "Correctly compiling nested schemas and combinators usually takes many patches.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Write a compiler that converts a supported JSON-schema subset into runtime validators with precise path-based errors, default injection, and reusable compiled artifacts.",
+      "acceptance_checks": [
+        "Nested objects and arrays validate correctly",
+        "Error messages include exact failing path and invalid value",
+        "Compiled validators are cached and reused",
+        "Validation behavior is deterministic across runs"
+      ]
+    },
+    {
+      "id": "RS-014",
+      "title": "Durable Job Queue",
+      "estimated_reference_loc": 560,
+      "why_hard_without_reuse": "Visibility timeout, retries, and dead-letter semantics are difficult to get correct together.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Build a persistent job queue with delayed jobs, visibility timeouts, exponential backoff retries, dead-letter queues, and exactly-once effects via idempotency keys.",
+      "acceptance_checks": [
+        "Timed-out jobs become visible again after visibility window",
+        "Retry schedule follows configured backoff policy",
+        "Poison jobs land in dead-letter queue after max retries",
+        "Idempotency keys prevent duplicate side effects"
+      ]
+    },
+    {
+      "id": "RS-015",
+      "title": "Resilient HTTP Client",
+      "estimated_reference_loc": 360,
+      "why_hard_without_reuse": "Circuit breaker transitions and fallback behavior are often inconsistent in first-pass code.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Create an HTTP client wrapper with retry budgets, circuit breaker state machine, hedged requests for tail latency, and per-endpoint policy configuration.",
+      "acceptance_checks": [
+        "Circuit opens and closes according to configured thresholds",
+        "Hedged requests do not duplicate non-idempotent actions",
+        "Retry policy is method-aware and status-aware",
+        "Client exposes deterministic telemetry events"
+      ]
+    },
+    {
+      "id": "RS-016",
+      "title": "JSON Diff and Patch Engine",
+      "estimated_reference_loc": 520,
+      "why_hard_without_reuse": "Move detection and reversible patch generation produce many subtle correctness bugs.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Implement a JSON diff engine that emits stable patch operations (add, remove, replace, move), applies patches safely, and supports exact reverse patch generation.",
+      "acceptance_checks": [
+        "Applying forward patch converts source to target exactly",
+        "Applying reverse patch restores original source exactly",
+        "Operation order is deterministic",
+        "Large nested arrays are handled without quadratic blowups"
+      ]
+    },
+    {
+      "id": "RS-017",
+      "title": "Multi-Format Report Pack Generator",
+      "estimated_reference_loc": 410,
+      "why_hard_without_reuse": "Coordinating consistent output across CSV, XLSX, and PDF often needs many formatting fixes.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Build a deterministic report generator that reads structured metrics and produces matching CSV, XLSX, and PDF outputs with the same totals, sections, and ordering.",
+      "acceptance_checks": [
+        "Totals match exactly across all output formats",
+        "Column ordering and rounding are consistent",
+        "Generated files are byte-stable for identical inputs",
+        "Failures surface actionable validation errors"
+      ]
+    },
+    {
+      "id": "RS-018",
+      "title": "YAML Infra Planner",
+      "estimated_reference_loc": 460,
+      "why_hard_without_reuse": "Dependency graph resolution and cycle handling are common failure points.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Implement a planner that compares desired-state YAML resources to current state and outputs an ordered plan of create, update, and delete operations with dependency-aware topological sorting.",
+      "acceptance_checks": [
+        "Plan order always respects resource dependencies",
+        "Cycle detection produces explicit diagnostics",
+        "No-op resources are excluded from apply plan",
+        "Diff output is stable and deterministic"
+      ]
+    },
+    {
+      "id": "RS-019",
+      "title": "Stateful Log Pipeline",
+      "estimated_reference_loc": 440,
+      "why_hard_without_reuse": "Multiline stitching and rule-based redaction usually need iterative debugging.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Build a log pipeline that parses mixed log formats, stitches multiline stack traces, extracts structured fields, redacts PII with rule sets, and emits per-service error metrics.",
+      "acceptance_checks": [
+        "Multiline events are reconstructed deterministically",
+        "PII redaction leaves no raw sensitive fields",
+        "Parser handles malformed lines without crash",
+        "Metrics are grouped correctly by service and severity"
+      ]
+    },
+    {
+      "id": "RS-020",
+      "title": "Release Orchestrator",
+      "estimated_reference_loc": 370,
+      "why_hard_without_reuse": "Release automation touches many edge cases around tagging, changelogs, and artifact integrity.",
+      "non_llm_required": true,
+      "one_shot_prompt": "Implement a release orchestrator that parses conventional commits, computes semantic version bumps, generates changelogs, builds artifacts, and writes signed checksum manifests.",
+      "acceptance_checks": [
+        "Version bump rules follow conventional commit semantics",
+        "Changelog groups commits deterministically",
+        "Artifact checksums verify reproducibly",
+        "Release can run in dry-run and apply modes"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "label": "baseline_no_raysurfer",
+  "notes": "Fill with real baseline trial results.",
+  "runs": [
+    {
+      "task_id": "RS-001",
+      "trial": 1,
+      "completed": false,
+      "elapsed_seconds": 180.0,
+      "timestamp_utc": "2026-02-20T00:00:00Z",
+      "details": "optional"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "label": "with_raysurfer",
+  "notes": "Recommended: 5 trials per task.",
+  "runs": [
+    {
+      "task_id": "RS-001",
+      "trial": 1,
+      "completed": true,
+      "elapsed_seconds": 91.4,
+      "timestamp_utc": "2026-02-20T00:00:00Z",
+      "details": "optional"
+    }
+  ]
+}
