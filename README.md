@@ -24,6 +24,7 @@ Then compare consistency and uplift.
 - `tasks/tasks.json`: 20 eval tasks with one-shot prompts and acceptance checks
 - `runs/run_log_template.json`: schema template for logging trial outcomes
 - `scripts/run_agent_eval.py`: benchmark runner for `baseline` and `raysurfer` modes
+- `scripts/run_rotating_sdk_eval.py`: rotating prompt-variant eval using Claude SDK baseline vs Raysurfer drop-in
 - `scripts/seed_verified_snippets.py`: seeds reusable verified snippets for eval prompts
 - `scripts/score_eval.py`: tiny scorer for consistency and baseline-vs-Raysurfer deltas
 - `scripts/generate_chart.py`: generates SVG summary charts from score JSON
@@ -81,17 +82,32 @@ uv run python scripts/generate_chart.py \
   --out assets/consistency_comparison.svg
 ```
 
-## Latest Benchmark (February 20, 2026)
+## Latest Rotating SDK Benchmark (February 21-22, 2026)
 
-- SLA: 180 seconds (3 minutes)
-- Task count: 20
-- Trials per task: 1
-- Setup: pre-seeded verified snippets per task via `scripts/seed_verified_snippets.py`
-- Baseline consistency: **5.0%** (1/20)
-- Raysurfer consistency: **100.0%** (20/20)
-- Uplift: **+95.0 percentage points**
+This run used `scripts/run_rotating_sdk_eval.py` with rotating prompt variants and
+cache-review-before-execution requirements.
 
-![Raysurfer vs Baseline Consistency](assets/consistency_comparison.svg)
+- Attempts per mode: **40** (20 tasks x 2 rounds)
+- Model: `claude-haiku-4-5-20251001`
+- Max turns: **8**
+- Timeout per task: **180s**
+- Baseline consistency: **55.0%** (22/40)
+- Raysurfer consistency: **40.0%** (16/40)
+- Delta: **-15.0 percentage points**
+- Raysurfer cache hit rate: **80.0%**
+- Raysurfer cache review rate: **75.0%**
+
+Status breakdown:
+- Baseline: `success=25`, `error_max_turns=15`, `timeout=0`
+- Raysurfer: `success=16`, `error_max_turns=20`, `timeout=4`
+
+Run artifacts:
+- Baseline runs: `runs/rotating_sdk_baseline.json`
+- Raysurfer runs: `runs/rotating_sdk_raysurfer.json`
+- Summary: `runs/rotating_sdk_summary.json`
+
+For a large persistence-focused uplift demo, use the MBPP rotating showcase in
+`../raysurfer-existing-benchmarks-eval/README.md`.
 
 ## Task Set (20)
 
